@@ -36,6 +36,14 @@ class TodotasksController < ApplicationController
     end
   end
 
+  def destroyall
+    if Todotask.connection.execute("DELETE FROM todotasks")
+      @todotask = Todotask.all
+      @len = @todotask.length
+    end
+    render :index
+  end
+
   private
   def valid_params
     params.require(:todotask).permit(:task, :status)

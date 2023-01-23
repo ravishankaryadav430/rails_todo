@@ -8,15 +8,17 @@
 
 <table class="table table-striped" cellspacing="20px" >
   <tr>
-    <th>Id</th>
+    <th>S.No</th>
     <th>Task</th>
     <th>Status</th>
     <th></th>
     <th></th>
   </tr>
+  <%task_counter = 0%>
     <% @todotask.each do |task| %>
     <tr>
-        <td> <%= task.id %> </td>
+        <%task_counter = task_counter + 1%>
+        <td> <%= task_counter %> </td>
         <td> <%= task.task %> </td>
         <td> <%= task.status %> </td>
         <td> <%= link_to "Edit", edit_todotask_path(task) %> </td>
@@ -30,9 +32,10 @@
     <% end %>
   
 </table>
-
+<div style="display: flex; justify-content: space-between">
 <button type="button" class="btn btn-primary" onclick="window.location.href='<%= new_todotask_path%>'">Add task</button>
-
+<button type="button" class="btn btn-primary" onclick="window.location.href='<%= todotasks_destroyall_path%>'">Delete all</button>
+</div>
 <div>
 
 </div>
