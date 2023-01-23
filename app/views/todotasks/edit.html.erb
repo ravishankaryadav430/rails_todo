@@ -1,0 +1,21 @@
+<div class="box">
+<%= form_with model: @todotask do |form| %>
+    <div>
+        <%= form.label :task%>
+        <%= form.text_field :task%>
+        <% @todotask.errors.full_messages_for(:task).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.label :status%>
+        <%= form.select :status, ["pending", "progress", "completed"]%>
+    </div>
+
+    <div>
+        <%= form.submit "Update task"%>
+    </div>
+    
+<% end %>
+</div>

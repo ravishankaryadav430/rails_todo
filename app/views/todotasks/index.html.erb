@@ -1,0 +1,38 @@
+<div class="box">
+<div>
+<h1> TODO </h1>
+
+<% if @len == 0%>
+    <h3> No tasks </h3>
+<%end%>
+
+<table class="table table-striped" cellspacing="20px" >
+  <tr>
+    <th>Id</th>
+    <th>Task</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+  </tr>
+    <% @todotask.each do |task| %>
+    <tr>
+        <td> <%= task.id %> </td>
+        <td> <%= task.task %> </td>
+        <td> <%= task.status %> </td>
+        <td> <%= link_to "Edit", edit_todotask_path(task) %> </td>
+        <td> <%= link_to "Delete", todotask_path(task), data: {
+                  turbo_method: :delete,
+                  turbo_confirm: "Are you sure?"
+                } %>
+        </td>
+  </p>
+    </tr>
+    <% end %>
+  
+</table>
+
+<button type="button" class="btn btn-primary" onclick="window.location.href='<%= new_todotask_path%>'">Add task</button>
+
+<div>
+
+</div>
